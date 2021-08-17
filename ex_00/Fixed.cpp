@@ -25,20 +25,11 @@ Fixed::~Fixed()
 
 int Fixed::getRawBits() const
 {
-	bool minus = false;
-
 	std::cout << "getRawBits member function called\n";
-	if ((fix_point_value & 0b10000000) == 0b10000000)
-		minus = true;
-	if (minus)
-		return ((fix_point_value<<1)>>5) * -1;
-	else
-		return ((fix_point_value<<1)>>5);
+    return (this->fix_point_value);
 }
 
 void Fixed::setRawBits(int const raw)
 {
-	if (raw < 0)
-		fix_point_value |= 0b10000000;
-	this->fix_point_value = ((raw<<5)>>1); ;
+	this->fix_point_value = (this->fix_point_value = raw);
 }

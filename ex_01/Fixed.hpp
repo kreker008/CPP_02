@@ -7,19 +7,35 @@
 class Fixed
 {
 public:
+    /*
+     * Constructor
+     */
 	Fixed();
 	Fixed(Fixed const& fix_o);
 	Fixed(int const i);
 	Fixed(float const f);
+	/*
+	 *  Operator overload
+	 */
 	Fixed& operator=(Fixed const& fix_o);
-	~Fixed();
-	int		getRawBits(void) const;
-	void	setRawBits(int const raw);
+
+    /*
+     *  Func-member
+     */
+    int		getRawBits(void) const;
+    void	setRawBits(int const raw);
+    float   toFloat( void ) const;
+    int     toInt( void ) const;
+
+    ~Fixed();
 private:
+    /*
+     *  Variable
+     */
 	int						fix_point_value;
-	const static int		constant = 8;
+	const static int		bits = 8;
 };
 
-
+std::ostream& operator<<(std::ostream&, Fixed const&);
 
 #endif
