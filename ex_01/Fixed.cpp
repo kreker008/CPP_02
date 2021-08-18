@@ -17,7 +17,7 @@ Fixed::Fixed(int const i)
 Fixed::Fixed(float const f)
 {
 	std::cout << "Float constructor called\n";
-	this->fix_point_value = ((int)((f * (1 << bits))));
+	this->fix_point_value = ((int)roundf((f * (1 << bits))));
 }
 
 Fixed::Fixed(Fixed const& fix_o) :	fix_point_value(fix_o.fix_point_value)
