@@ -14,6 +14,8 @@ Fixed::Fixed(Fixed const& fix_o) :	fix_point_value(fix_o.fix_point_value)
 Fixed& Fixed::operator=(Fixed const& fix_o)
 {
 	std::cout << "Assignation operator called\n";
+	if (this == &fix_o)
+		return (*this);
 	this->fix_point_value = fix_o.getRawBits();
 	return (*this);
 }

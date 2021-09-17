@@ -20,9 +20,10 @@ Fixed::Fixed(float const f)
 	this->fix_point_value = ((int)roundf((f * (1 << bits))));
 }
 
-Fixed::Fixed(Fixed const& fix_o) :	fix_point_value(fix_o.fix_point_value)
+Fixed::Fixed(Fixed const& fix_o)
 {
 	std::cout << "Copy constructor called\n";
+	*this = fix_o;
 }
 
 /*
@@ -31,6 +32,8 @@ Fixed::Fixed(Fixed const& fix_o) :	fix_point_value(fix_o.fix_point_value)
 Fixed& Fixed::operator=(Fixed const& fix_o)
 {
 	std::cout << "Assignation operator called\n";
+	if (this == &fix_o)
+		return (*this);
 	this->fix_point_value = fix_o.getRawBits();
 	return (*this);
 }
